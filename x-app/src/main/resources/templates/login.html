@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layouts/layout-activity" th:with="title='Login'">
+<head>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div
+			layout="column"
+			layout-align="center center"
+			layout-margin="1"
+			layout-fill="1">
+
+			<h3 md-colors="::{color: 'accent'}">Login</h3>
+
+			<br />
+
+			<div
+				th:if="${param.error}"
+				class="md-caption"
+				md-colors="::{color: 'warn'}">Invalid username and password</div>
+
+			<div
+				th:if="${param.logout}"
+				class="md-caption"
+				md-colors="::{color: 'warn'}">You have been logged out</div>
+
+			<div layout="column">
+				<form
+					name="loginForm"
+					th:action="@{/login}"
+					method="post"
+					action="">
+
+					<md-input-container class="md-block"> <label>User Name</label> <input
+						required="required"
+						name="username"
+						ng-model="login.username" />
+					<div ng-messages="loginForm.username.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+					</md-input-container>
+
+					<md-input-container class="md-block"> <label>Password</label> <input
+						type="password"
+						required="required"
+						name="password"
+						ng-model="login.password" />
+					<div ng-messages="loginForm.password.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+					</md-input-container>
+
+					<div
+						layout="row"
+						layout-align="start start">
+						<md-button
+							class="md-raised"
+							href="/signin"
+							th:href="@{/signin}"
+							aria-label="Sign In">Sign In</md-button>
+						<span flex="1"></span>
+						<md-button
+							class="md-raised md-primary"
+							type="submit">Login</md-button>
+					</div>
+
+					<br />
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

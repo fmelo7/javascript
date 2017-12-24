@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/headtag :: headtag"></head>
+<body
+	ng-app="App"
+	ng-controller="AppController"
+	layout="row">
+
+	<!-- sidebar -->
+	<div th:replace="fragments/sidebar :: sidebar"></div>
+
+	<!-- main container -->
+	<div
+		layout="column"
+		layout-fill="1"
+		flex="flex">
+
+		<!-- toolbar -->
+		<md-toolbar md-whiteframe="2">
+			<div class="md-toolbar-tools">
+	
+				<md-button
+					ng-click="toggleLeft()"
+					class="md-icon-button"
+					aria-label="Menu"> <i class="material-icons">menu</i> </md-button>
+	
+				<md-button
+					href="/home"
+					th:href="@{/home}"
+					aria-label="Home">
+					<div
+						layout="row"
+						layout-align="end center"
+						flex="flex">
+						<i class="material-icons">photo</i>
+						<p
+							style="margin: 0 auto 0 auto;"
+							flex="flex">App</p>
+					</div>
+				</md-button>
+	
+				<span flex="flex"></span>
+	
+				<form
+					th:action="@{/search}"
+					name="searchForm"
+					method="post"
+					action="">
+					<md-input-container
+						layout="row"
+						layout-align="center end"
+						flex="flex"> <label>&nbsp;</label> <input
+						ng-model="search.who"
+						placeholder="search" /> </md-input-container>
+				</form>
+	
+				<md-button
+					class="md-icon-button"
+					aria-label="Search"> <i class="material-icons">search</i> </md-button>
+	
+				<md-button
+					class="md-icon-button"
+					href="/views/cart"
+					th:href="@{/views/cart}"
+					aria-label="Shopping_Cart"> <i class="material-icons">shopping_cart</i> </md-button>
+	
+				<md-menu>
+					<md-button
+						aria-label="Menu"
+						class="md-icon-button"
+						ng-click="$mdOpenMenu($event)"> <i class="material-icons">more_vert</i> 
+					</md-button> 
+					<md-menu-content width="3">
+						<div sec:authorize="isAnonymous()">
+							<md-menu-item>
+								<md-button
+									href="/login"
+									th:href="@{/login}"
+									aria-label="Login">
+									<div
+										layout="row"
+										layout-align="end center">
+										<p flex="flex">Login</p>
+										<span flex="flex"></span> <i class="material-icons">face</i>
+									</div>
+								</md-button> 
+							</md-menu-item>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<md-menu-item>
+								<md-button
+									href="/logout"
+									th:href="@{/logout}"
+									aria-label="Logout">
+									<div
+										layout="row"
+										layout-align="end center">
+										<p flex="flex">Logout</p>
+										<span flex="flex"></span> <i class="material-icons">exit_to_app</i>
+									</div>
+								</md-button> 
+							</md-menu-item> 
+							<md-menu-item> 
+								<md-button
+									href="/views/settings"
+									th:href="@{/views/settings}"
+									aria-label="Settings">
+									<div
+										layout="row"
+										layout-align="end center">
+										<p flex="flex">Settings</p>
+										<span flex="flex"></span> <i class="material-icons">settings</i>
+									</div>
+								</md-button> 
+							</md-menu-item>
+						</div>
+					</md-menu-content>
+				</md-menu>
+			</div>
+		</md-toolbar>
+
+		<md-progress-linear
+			md-mode="determinate"
+			md-theme="theme1"
+			value="{{determinateValue}}"></md-progress-linear>
+
+		<md-content layout="column">
+
+			<div layout:fragment="content"></div>
+	
+			<!-- footer -->
+			<div th:replace="fragments/footer :: footer"></div>
+
+		</md-content>
+	</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layouts/layout-activity" th:with="title='Sign In'">
+<head></head>
+<body>
+
+	<div
+		layout="row"
+		layout-wrap="1"
+		layout-align="center center"
+		layout:fragment="content">
+
+		<div
+			layout="column"
+			layout-align="center center"
+			flex-xs="100"
+			flex-sm="50"
+			flex-gt-sm="33">
+
+			<h3 md-colors="::{color: 'accent'}">Sign In</h3>
+
+			<br />
+
+			<div
+				layout="column"
+				layout-fill="1"
+				layout-margin="1"
+				ng-controller="SignInController">
+
+				<form
+					name="SigninForm"
+					th:action="@{/signinUser}"
+					method="post"
+					action="">
+
+					<!-- 
+					<md-input-container class="md-block"> <label>Name</label> <input
+						required="required"
+						name="name"
+						ng-model="login.name" />
+					<div ng-messages="SigninForm.name.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+					</md-input-container>
+					 -->
+
+					<!-- 
+					<md-input-container class="md-block"> <label>Email</label> <input
+						required="required"
+						type="email"
+						name="email"
+						ng-model="login.email"
+						minlength="10"
+						maxlength="100"
+						ng-pattern="/^.+@.+\..+$/" /> 
+					<div ng-messages="SigninForm.email.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message-exp="['minlength', 'maxlength', 'pattern']">Your email must be between 10 and 100
+							characters long and look like an e-mail address.</div>
+					</div>
+					</md-input-container>
+					 -->
+
+					<md-input-container class="md-block"> <label>Username</label> <input
+						required="required"
+						name="username"
+						ng-model="login.username"
+						username-available="username-available"
+						ng-model-options="{ updateOn: 'blur' }" />
+					<div ng-messages="SigninForm.username.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="usernameAvailable">username exists already.</div>
+					</div>
+					</md-input-container>
+
+					<md-input-container class="md-block"> <label>Password</label> <input
+						type="password"
+						required="required"
+						name="password"
+						ng-model="login.password"
+						password-verify="{{login.passwordconfirm}}"/>
+					<div ng-messages="SigninForm.password.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="passwordVerify">Password do not match</div>
+					</div>
+					</md-input-container>
+
+					<md-input-container class="md-block"> <label>Confirm Password</label> <input
+						type="password"
+						required="required"
+						name="passwordconfirm"
+						ng-model="login.passwordconfirm"
+						password-verify="{{login.password}}" />
+					<div ng-messages="SigninForm.passwordconfirm.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="passwordVerify">Password do not match</div>
+					</div>
+					</md-input-container>
+
+					<div
+						layout="row"
+						layout-align="end start">
+						<!-- 
+						<md-button
+							class="md-raised md-primary"
+							ng-disabled="SigninForm.$invalid"
+							type="submit">Sign In</md-button>
+						 -->
+						<md-button
+							type="button"
+							class="md-raised md-primary"
+							ng-disabled="SigninForm.$invalid"
+							ng-click="vm.signin(login)">Sign in</md-button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

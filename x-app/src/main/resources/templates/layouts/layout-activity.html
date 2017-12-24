@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/headtag :: headtag"></head>
+<body
+	ng-app="App"
+	ng-controller="AppController"
+	layout="row"
+	md-theme="theme3">
+
+	<!-- sidebar -->
+	<div th:replace="fragments/sidebar :: sidebar"></div>
+
+	<!-- main container -->
+	<div
+		layout="column"
+		layout-fill="1"
+		flex="flex">
+
+		<!-- toolbar -->
+		<md-toolbar md-whiteframe="2">
+		<div class="md-toolbar-tools">
+			<md-button
+				class="md-icon-button md-raised md-accent"
+				href="/home"
+				th:href="@{/home}"
+				aria-label="Home"> <i class="material-icons">keyboard_backspace</i> </md-button>
+
+			<div>
+				<p
+					style="margin: 0 auto 0 auto;"
+					th:text="${title}"
+					flex="flex">Activity title</p>
+			</div>
+		</div>
+		</md-toolbar>
+
+		<md-progress-linear
+			md-mode="determinate"
+			md-theme="theme1"
+			value="{{determinateValue}}"></md-progress-linear>
+
+		<md-content layout="column">
+
+		<div layout:fragment="content"></div>
+
+		<!-- footer -->
+		<div th:replace="fragments/footer :: footer"></div>
+
+		</md-content>
+
+	</div>
+</body>
+</html>

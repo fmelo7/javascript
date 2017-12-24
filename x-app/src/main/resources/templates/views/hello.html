@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layouts/layout-activity" th:with="title='Settings'">
+<head></head>
+<body>
+
+	<div layout:fragment="content">
+
+		<div
+			layout="column"
+			layout-align="center center"
+			layout-fill="1">
+
+			<div
+				class="md-headline"
+				md-colors="::{color: 'accent'}">Welcome!</div>
+
+			<div style="height: 66px"></div>
+
+			<div>
+				<md-button
+					th:href="@{/hello}"
+					class="md-raised md-primary">Click here to see a greeting</md-button>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

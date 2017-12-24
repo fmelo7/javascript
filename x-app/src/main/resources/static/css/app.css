@@ -1,0 +1,22 @@
+/* main css app */
+
+/* custom button */
+.md-button.left {
+	border-radius: 10px 0 0 10px;
+}
+
+.md-button.middle {
+	border-radius: 0;
+}
+
+.md-button.right {
+	border-radius: 0 10px 10px 0;
+}
+
+.md-toolbar {
+	min-height: 32px;
+}
+
+.md-toolbar.md-toolbar-tools {
+	height: 32px;
+}

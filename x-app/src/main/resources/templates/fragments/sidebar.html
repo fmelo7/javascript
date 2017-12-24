@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+	<div th:fragment="sidebar">
+		<md-sidenav
+			md-component-id="left"
+			md-whiteframe="2"
+			class="md-sidenav-left">
+			<md-toolbar md-whiteframe="2">
+				<div class="md-toolbar-tools">
+					<md-button
+						class="md-icon-button md-raised md-accent"
+						ng-click="toggleLeft()">
+						<i class="material-icons">keyboard_backspace</i>
+					</md-button>
+				</div>
+			</md-toolbar>
+		</md-sidenav>
+	</div>
+</body>
+</html>
+

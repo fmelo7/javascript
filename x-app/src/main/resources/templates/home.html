@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layouts/layout-main" th:with="title='Lista'">
+<head>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<div
+			layout="row"
+			layout-wrap="1">
+
+			<!-- list cards -->
+			<div
+				flex-xs="100"
+				flex-sm="50"
+				flex-gt-sm="33"
+				ng-repeat="i in [1,2,3,4,5,6,7]">
+				<my-card
+					name="Product {{i}}"
+					description="Description of the product number {{i}}. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+					theme="theme1"></my-card>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
