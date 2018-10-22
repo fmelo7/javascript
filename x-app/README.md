@@ -43,6 +43,10 @@ Run bower to install modules dependencies
 
 > bower install
 
+Run mvn to install development dependencies
+
+> mvn install
+
 Run grunt to copy modules dependencies
 
 > grunt

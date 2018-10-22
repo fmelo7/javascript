@@ -7,7 +7,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>x-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>x-app</name>
 	<description>x-app</description>
 	<parent>
